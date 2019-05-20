@@ -26,11 +26,14 @@
 (load-theme 'zenburn t)
 (when window-system 
   (tool-bar-mode -1)
-  (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tooltip-mode -1))
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message "")
+(menu-bar-mode -1)
+
+;; enable ido mode
+(ido-mode t)
 
 ;; set vim mode
 (require 'evil)
