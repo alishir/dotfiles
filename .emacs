@@ -14,7 +14,7 @@
  '(ido-enable-flex-matching t)
  '(package-selected-packages
    (quote
-    (auto-complete flycheck-tip flycheck company popup magit circe evil-visual-mark-mode zenburn-theme org)))
+    (markdown-mode auto-complete flycheck-tip flycheck company popup magit circe evil-visual-mark-mode zenburn-theme org)))
  '(show-paren-mode t)
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
 (custom-set-faces
@@ -45,15 +45,11 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 
-;; org-mode config
-
 ;; erlang config
 (setq load-path (cons "/usr/local/lib/erlang/lib/tools-3.1/emacs" load-path))
 (setq erlang-root-dir "/usr/local/lib/erlang")
 (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
 (require 'erlang-start)
-
-
 
 ;;flycheck
 (require 'flycheck)
@@ -85,4 +81,23 @@
 
 ;; set key binding
 (global-set-key (kbd "M-SPC") 'switch-to-previous-buffer)
-(global-set-key (kbd "C-y") 'clipboard-yank)
+(global-set-key (kbd "M-y") 'clipboard-yank)
+
+
+;; org-mode GTD
+(define-key global-map "\C-ca" #'org-agenda)
+(define-key global-map "\C-cc" #'org-capture)
+
+(setq org-agenda-files '("~/gtd/inbox.org"
+			 "~/gtd/gtd.org"
+			 "~/gtd/tickler.org"))
+(setq org-capture-templates '(("t" "Todo [inbox]" entry
+			       (file+headline "~/gtd/inbox.org" "Tasks")
+			       "* TODO %i%? [%]")
+			      ("T" "Tickler" entry
+			       (file+headline "~/gtd/tickler.org" "Tickler")
+			       "* %i%? \nSCHEDULED: %^t")))
+(setq org-refile-targets '(("~/gtd/gtd.org" :maxlevel . 3)
+			   ("~/gtd/someday.org" :level . 1)
+			   ("~/gtd/tickler.org" :maxlevel . 2)))
+(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
