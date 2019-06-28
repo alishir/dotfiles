@@ -35,6 +35,8 @@
 
 ;; enable ido mode
 (ido-mode t)
+(global-linum-mode t)
+(setq backup-inhibited t)
 
 ;; set vim mode
 (require 'evil)
@@ -101,3 +103,7 @@
 			   ("~/gtd/someday.org" :level . 1)
 			   ("~/gtd/tickler.org" :maxlevel . 2)))
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
+
+
+;; C code style
+(setq c-default-style "k&r")

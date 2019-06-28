@@ -241,7 +241,7 @@ end
 #setenv QT_DEVICE_PIXEL_RATIO 2
 #setenv GDK_SCALE 2
 #setenv GDK_DPI_SCALE 0.5
-setenv JAVA_HOME /usr/local/jdk/jdk1.8.0_60/
+setenv JAVA_HOME /home/ali/dev-tools/java/jdk-12/
 setenv _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=lcd -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 setenv JAVA_FONTS /usr/share/fonts/TTF
 setenv MATLAB_JAVA /usr/lib/jvm/default-runtime
