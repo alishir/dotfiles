@@ -26,6 +26,8 @@
 
 (load-theme 'zenburn t)
 (when window-system 
+  (set-fontset-font "fontset-default" 'unicode  "Noto Sans Arabic")
+  ;(set-fontset-font "fontset-default" '(#x600 . #x6ff) "DejaVu Sans Mono") 
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (tooltip-mode -1))
@@ -107,3 +109,28 @@
 
 ;; C code style
 (setq c-default-style "k&r")
+
+
+
+(defun bury-compile-buffer-if-successful (buffer string)
+  "Bury a compilation buffer if succeeded without warnings "
+  (when (and
+	 (buffer-live-p buffer)
+	 (string-match "compilation" (buffer-name buffer))
+	 (string-match "finished" string)
+	 (not
+	  (with-current-buffer buffer
+	    (goto-char (point-min))
+	    (search-forward "warning" nil t))))
+    (run-with-timer 1 nil
+		    (lambda (buf)
+		      (bury-buffer buf)
+		      (switch-to-prev-buffer (get-buffer-window buf) 'kill))
+		    buffer)))
+
+;; Bidirectional editing
+(add-hook 'latex-mode-hook (lambda ()
+			     (setq-default bidi-paragraph-start-re "^")
+			     (setq-default bidi-paragraph-separate-re "^")
+			     (electric-indent-local-mode -1)
+			     ))
