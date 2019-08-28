@@ -14,9 +14,10 @@
  '(ido-enable-flex-matching t)
  '(package-selected-packages
    (quote
-    (markdown-mode auto-complete flycheck-tip flycheck company popup magit circe evil-visual-mark-mode zenburn-theme org)))
+    (ranger evil-org markdown-mode auto-complete flycheck-tip flycheck company popup magit circe evil-visual-mark-mode zenburn-theme org)))
  '(show-paren-mode t)
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -82,11 +83,16 @@
   "Switch to most recent buffer. Repeated calls toggle back and forth between the most recent two buffers."
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
-
 ;; set key binding
 (global-set-key (kbd "M-SPC") 'switch-to-previous-buffer)
 (global-set-key (kbd "M-y") 'clipboard-yank)
 
+;; evil-org-mode
+(require 'evil-org)
+(add-hook 'org-mode-hook 'evil-org-mode)
+(evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+(require 'evil-org-agenda)
+(evil-org-agenda-set-keys)
 
 ;; org-mode GTD
 (define-key global-map "\C-ca" #'org-agenda)
@@ -106,11 +112,30 @@
 			   ("~/gtd/tickler.org" :maxlevel . 2)))
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
 
+(setq org-agenda-custom-commands 
+      '(("o" "At the office" tags-todo "@reading"
+	 ((org-agenda-overriding-header "Office")
+	  (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))))
+
+(defun my-org-agenda-skip-all-siblings-but-first ()
+  "Skip all but the first non-done entry."
+  (let (should-skip-entry)
+    (unless (org-current-is-todo)
+      (setq should-skip-entry t))
+    (save-excursion
+      (while (and (not should-skip-entry) (org-goto-sibling t))
+	(when (org-current-is-todo)
+	  (setq should-skip-entry t))))
+    (when should-skip-entry
+      (or (outline-next-heading)
+	  (goto-char (point-max))))))
+
+(defun org-current-is-todo ()
+  (string= "TODO" (org-get-todo-state)))
+
 
 ;; C code style
 (setq c-default-style "k&r")
-
-
 
 (defun bury-compile-buffer-if-successful (buffer string)
   "Bury a compilation buffer if succeeded without warnings "

@@ -31,7 +31,7 @@ myModMask       = mod4Mask -- or mod4Mask for super
 myWorkspaces    = ["web","a","b","c","long","mx","sfx"]
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
-    [ ((0, xK_Print), (spawn "scrot -s /tmp/screen_shot.png"))
+    [ ((0, xK_Print), (spawn "sleep 0.2; scrot -s /tmp/%Y-%m-%d-%H%M%S.png"))
     , ((mod4Mask, xK_a), (spawn myTerminal))
     , ((mod4Mask, xK_f), (spawn "Thunar"))
     , ((mod4Mask, xK_q), (spawn "/usr/bin/bash -c 'notify-send -i time \"Right now, it is\" \"$(date \"+%-I:%M %p, %A %B %d, %Y\")\n$(acpi | sed \"s/Battery 0://\")\"'"))
