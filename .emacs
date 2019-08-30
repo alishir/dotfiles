@@ -12,6 +12,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ido-enable-flex-matching t)
+ '(org-file-apps
+   (quote
+    ((auto-mode . emacs)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . "mupdf %s"))))
  '(package-selected-packages
    (quote
     (ranger evil-org markdown-mode auto-complete flycheck-tip flycheck company popup magit circe evil-visual-mark-mode zenburn-theme org)))
