@@ -56,8 +56,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --, ((mod4Mask, xK_i), (spawn "playerctl next &"))
     --, ((0, xF86XK_AudioPrev), (spawn "playerctl previous &"))
     --, ((mod4Mask, xK_u), (spawn "playerctl previous &"))
-    , ((controlMask .|. mod1Mask, xK_Right), nextWS)
-    , ((controlMask .|. mod1Mask, xK_Left), prevWS)
+    , ((controlMask .|. mod1Mask, xK_l), nextWS)
+    , ((controlMask .|. mod1Mask, xK_h), prevWS)
     , ((controlMask .|. mod1Mask .|. shiftMask, xK_Right), shiftToNext >> nextWS)
     , ((controlMask .|. mod1Mask .|. shiftMask, xK_Left), shiftToPrev >> prevWS)
     ] 

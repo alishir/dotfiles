@@ -7,40 +7,18 @@ set -q XDG_DATA_HOME
 source $OMF_PATH/init.fish
 
 set -U fish_user_abbreviations
-set -U fish_user_abbreviations $fish_user_abbreviations 'c=cargo'
+# set -U fish_user_abbreviations $fish_user_abbreviations 'c=cargo'
 set -U fish_user_abbreviations $fish_user_abbreviations 'm=make'
 set -U fish_user_abbreviations $fish_user_abbreviations 'o=xdg-open'
 set -U fish_user_abbreviations $fish_user_abbreviations 'g=git'
 set -U fish_user_abbreviations $fish_user_abbreviations 'gc=git checkout'
 set -U fish_user_abbreviations $fish_user_abbreviations 'vimdiff=nvim -d'
-set -U fish_user_abbreviations $fish_user_abbreviations 'clippy=cargo +nightly clippy'
-set -U fish_user_abbreviations $fish_user_abbreviations 'cargot=cargo t'
-set -U fish_user_abbreviations $fish_user_abbreviations 'amz=env AWS_SECRET_ACCESS_KEY=(pass www/aws-secret-key | head -n1)'
 set -U fish_user_abbreviations $fish_user_abbreviations 'gah=git stash; and git pull --rebase; and git stash pop'
-set -U fish_user_abbreviations $fish_user_abbreviations 'c=cargo'
 set -U fish_user_abbreviations $fish_user_abbreviations 'nv=nvim'
-complete --command yaourt --wraps pacman
-complete --command aurman --wraps pacman
-complete --command pacaur --wraps pacman
-complete --command aurman --wraps pacman
 
 if status --is-interactive
-	# tmux ^ /dev/null; and exec true
-	tmux attach; and exec true
-end
-
-if [ -e /usr/bin/aurman ]
-	set -U fish_user_abbreviations $fish_user_abbreviations 'p=aurman'
-	set -U fish_user_abbreviations $fish_user_abbreviations 'up=aurman -Syu'
-else if [ -e /usr/bin/pacaur ]
-	set -U fish_user_abbreviations $fish_user_abbreviations 'p=pacaur'
-	set -U fish_user_abbreviations $fish_user_abbreviations 'up=pacaur -Syu'
-else if [ -e /usr/bin/yaourt ]
-	set -U fish_user_abbreviations $fish_user_abbreviations 'p=yaourt'
-	set -U fish_user_abbreviations $fish_user_abbreviations 'up=yaourt -Syu --aur'
-else
-	set -U fish_user_abbreviations $fish_user_abbreviations 'p=sudo pacman'
-	set -U fish_user_abbreviations $fish_user_abbreviations 'up=sudo pacman -Syu'
+	tmux ^ /dev/null; and exec true
+	# tmux attach; and exec true
 end
 
 if exa --version >/dev/null
@@ -62,17 +40,6 @@ if test -f /usr/share/autojump/autojump.fish;
 	source /usr/share/autojump/autojump.fish;
 end
 
-function ssh
-	switch $argv[1]
-	case "*.amazonaws.com"
-		env TERM=xterm /usr/bin/ssh $argv
-	case "ubuntu@"
-		env TERM=xterm /usr/bin/ssh $argv
-	case "*"
-		/usr/bin/ssh $argv
-	end
-end
-
 function limit
 	numactl -C 0,2 $argv
 end
@@ -84,54 +51,6 @@ function remote_alacritty
 	scp $fn $argv[1]":alacritty-256color.ti"
 	ssh $argv[1] tic "alacritty-256color.ti"
 	ssh $argv[1] rm "alacritty-256color.ti"
-end
-
-function remarkable
-	if test (count $argv) -lt 1
-		echo "No files given"
-		return
-	end
-
-	ip addr show up to 10.11.99.0/29 | grep enp0s20u2 >/dev/null
-	if test $status -ne 0
-		# not yet connected
-		echo "Connecting to reMarkable internal network"
-		sudo dhcpcd enp0s20u2
-	end
-	for f in $argv
-		curl --form "file=@"$f http://10.11.99.1/upload
-		echo
-	end
-end
-
-function md2pdf
-	set t (mktemp -t md2pdf.XXXXXXX.pdf)
-	pandoc --smart --standalone --from markdown_github -V geometry:letterpaper,margin=2cm $argv[1] -o $t
-	set --erase argv[1]
-	if test (count $argv) -gt 0 -a $argv[1] '!=' '-'
-		mv $t $argv[1]
-	else
-		cat $t
-		rm $t
-	end
-end
-
-function lpmd
-	set infile $argv[1]
-	set --erase argv[1]
-	md2pdf $infile - | lp $argv -
-end
-
-function pdfo
-	echo $argv | xargs pdflatex
-	echo $argv | sed 's/\.tex$/.pdf/' | xargs xdg-open
-end
-
-function px
-	ssh -fND localhost:8080 -C jon@ssh.thesquareplanet.com -p 222
-end
-function athena
-	env SSHPASS=(pass www/mit) sshpass -e ssh athena $argv
 end
 
 set nooverride PATH PWD
@@ -167,13 +86,6 @@ function onchdir -v PWD
 	end
 end
 
-set FORTUNES computers debian linux magic
-set FORTUNES futurama hitchhiker $FORTUNES
-set FORTUNES firefly calvin perl $FORTUNES
-set FORTUNES science wisdom miscellaneous $FORTUNES
-set FORTUNES off/atheism off/debian off/linux off/privates $FORTUNES
-set FORTUNES off/religion off/vulgarity $FORTUNES
-
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
 set __fish_git_prompt_showdirtystate 'yes'
@@ -181,6 +93,7 @@ set __fish_git_prompt_showstashstate ''
 set __fish_git_prompt_showupstream 'none'
 set -g fish_prompt_pwd_dir_length 3
 
+set PATH $PATH ~/projects/ims/tests/tools/titan/ttcn3/bin
 set PATH /usr/local/bin/ $PATH
 set PATH $PATH ~/bin
 set PATH $PATH ~/.local/bin
@@ -188,7 +101,10 @@ set PATH $PATH ~/.cargo/bin
 set PATH $PATH ~/.npm-global/bin
 set PATH $PATH ~/dev/go/bin
 set PATH $PATH ~/.yarn/bin
-set PATH $PATH $JAVA_HOME/bin
+set PATH $PATH ~/dev-tools/android/android-sdk-linux/tools
+set PATH $PATH ~/dev-tools/android/android-sdk-linux/tools/bin/
+set PATH $PATH ~/dev-tools/android/android-sdk-linux/build-tools
+set PATH $PATH ~/dev-tools/android/ndk/android-ndk-r20/
 
 # For RLS
 # https://github.com/fish-shell/fish-shell/issues/2456
@@ -196,7 +112,7 @@ setenv LD_LIBRARY_PATH (rustc +stable --print sysroot)"/lib:$LD_LIBRARY_PATH"
 setenv RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
 
 setenv EDITOR nvim
-setenv BROWSER firefox-developer-edition
+setenv BROWSER brave-browser
 setenv EMAIL jon@tsp.io
 setenv NAME "Jon Gjengset"
 setenv GOPATH "$HOME/dev/go:$HOME/dev/projects/cuckood:$HOME/dev/projects/hasmail"
@@ -241,7 +157,8 @@ end
 #setenv QT_DEVICE_PIXEL_RATIO 2
 #setenv GDK_SCALE 2
 #setenv GDK_DPI_SCALE 0.5
-setenv JAVA_HOME /home/ali/dev-tools/java/jdk-12/
+#setenv JAVA_HOME /home/ali/dev-tools/java/jdk-12/
+setenv JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 setenv _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=lcd -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 setenv JAVA_FONTS /usr/share/fonts/TTF
 setenv MATLAB_JAVA /usr/lib/jvm/default-runtime
