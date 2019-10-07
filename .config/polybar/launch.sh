@@ -3,7 +3,7 @@
 # Terminate already running bar instances
 killall -q polybar
 pkill ibus-daemon
-setxkbmap -layout us,ir -option grp:menu_toggle
+setxkbmap -layout us,ir -option grp:caps_toggle
 xmodmap -e "keycode 133 = Super_L"
 xmodmap -e "keycode 135 = ISO_Next_Group"
 bash ~/.screenlayout/dual_up.sh
