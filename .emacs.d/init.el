@@ -6,7 +6,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (auto-complete auctex evil zenburn-theme))))
+ '(package-selected-packages (quote (erlang auto-complete auctex evil zenburn-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -27,6 +27,10 @@
 ;; set vim mode
 (require 'evil)
 (evil-mode t)
+
+;; set ido mode
+(require 'ido)
+(ido-mode t)
 
 ;; auto-complete
 (ac-config-default)
