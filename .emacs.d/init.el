@@ -8,7 +8,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-erlang ivy-erlang-complete elixir-mode hl-todo erlang auto-complete auctex evil zenburn-theme))))
+    (vue-mode rjsx-mode rfc-mode smooth-scrolling company-erlang ivy-erlang-complete elixir-mode hl-todo erlang auto-complete auctex evil zenburn-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -41,6 +41,10 @@
 
 ;; theme
 (load-theme 'zenburn t)
+(smooth-scrolling-mode t)
+
+;; use space instead of tab for indentation
+(setq-default indent-tabs-mode nil)
 
 ;; Set default font
 (set-face-attribute 'default nil
