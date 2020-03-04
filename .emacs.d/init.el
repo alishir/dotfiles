@@ -17,7 +17,7 @@
  )
 
 (when window-system 
-  (set-fontset-font "fontset-default" 'unicode  "Noto Sans Arabic")
+  (set-fontset-font "fontset-default" 'unicode  "Vazir Code")
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (tooltip-mode -1))
