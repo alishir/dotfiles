@@ -8,5 +8,6 @@
     "[elixir]": {
         "editor.defaultFormatter": "JakeBecker.elixir-ls"
     },
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDragAndDrop": false
 }
