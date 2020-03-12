@@ -9,5 +9,6 @@
         "editor.defaultFormatter": "JakeBecker.elixir-ls"
     },
     "files.autoSave": "afterDelay",
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false
 }

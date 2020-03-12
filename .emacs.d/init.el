@@ -8,7 +8,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (vue-mode rjsx-mode rfc-mode smooth-scrolling company-erlang ivy-erlang-complete elixir-mode hl-todo erlang auto-complete auctex evil zenburn-theme))))
+    (openwith vue-mode rjsx-mode rfc-mode smooth-scrolling company-erlang ivy-erlang-complete elixir-mode hl-todo erlang auto-complete auctex evil zenburn-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -26,6 +26,7 @@
 (menu-bar-mode -1)
 (display-time-mode 1)
 (linum-mode 1)
+(set-default 'truncate-lines t)
 
 ;; set vim mode
 (require 'evil)
@@ -52,6 +53,10 @@
                     :height 120
                     :weight 'normal
                     :width 'normal)
+;; open PDF files with MuPDF
+(require 'openwith)
+(openwith-mode t)
+(setq openwith-associations '(("\\.pdf\\'" "mupdf" (file))))
 
 (load "~/.emacs.d/load-directory")
 (load-directory "~/.emacs.d/config")
