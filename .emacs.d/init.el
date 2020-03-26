@@ -1,5 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -8,7 +9,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (openwith vue-mode rjsx-mode rfc-mode smooth-scrolling company-erlang ivy-erlang-complete elixir-mode hl-todo erlang auto-complete auctex evil zenburn-theme))))
+    (org org-multiple-keymap openwith vue-mode rjsx-mode rfc-mode smooth-scrolling company-erlang ivy-erlang-complete elixir-mode hl-todo erlang auto-complete auctex evil zenburn-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
