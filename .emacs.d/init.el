@@ -26,7 +26,7 @@
 (setq initial-scratch-message "")
 (menu-bar-mode -1)
 (display-time-mode 1)
-(linum-mode 1)
+(global-display-line-numbers-mode)
 (set-default 'truncate-lines t)
 
 ;; set vim mode
