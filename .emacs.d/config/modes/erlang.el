@@ -1,8 +1,4 @@
-(require 'ivy-erlang-complete)
-(add-hook 'erlang-mode-hook #'ivy-erlang-complete-init)
-;; automatic update completion data after save
-(add-hook 'after-save-hook #'ivy-erlang-complete-reparse)
-
-(add-hook 'erlang-mode-hook #'company-erlang-init)
-
-;;(global-set-key "\t" 'ivy-erlang-complete)
+(setq load-path (cons  "/home/ali/.kerl/22.2/lib/tools-3.3/emacs/" load-path))
+(setq erlang-root-dir "/home/ali/.kerl/22.2/")
+(setq exec-path (cons "/home/ali/.kerl/22.2/bin/" exec-path))
+(require 'erlang-start)

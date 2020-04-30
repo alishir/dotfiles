@@ -1,14 +1,14 @@
 {
     "workbench.colorTheme": "Zenburn",
     "editor.fontSize": 15,
-    "window.zoomLevel": 0.3,
+    "window.zoomLevel": 0,
     "editor.rulers": [
         60
     ],
     "[elixir]": {
         "editor.defaultFormatter": "JakeBecker.elixir-ls"
     },
-    "files.autoSave": "afterDelay",
+    "files.autoSave": "off",
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false
 }
