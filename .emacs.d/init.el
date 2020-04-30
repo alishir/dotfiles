@@ -61,6 +61,7 @@
 
 ;; ALT-space switch back and forth between buffers
 (global-set-key (kbd "M-SPC") 'mode-line-other-buffer)
+(global-set-key (kbd "<f3>") 'save-buffer)
 
 
 
