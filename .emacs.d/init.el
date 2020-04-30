@@ -59,6 +59,11 @@
 (openwith-mode t)
 (setq openwith-associations '(("\\.pdf\\'" "mupdf" (file))))
 
+;; ALT-space switch back and forth between buffers
+(global-set-key (kbd "M-SPC") 'mode-line-other-buffer)
+
+
+
 (load "~/.emacs.d/load-directory")
 (load-directory "~/.emacs.d/config")
 
