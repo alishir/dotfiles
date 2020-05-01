@@ -28,7 +28,7 @@ myFocusFollowsMouse = False
 myClickJustFocuses = False
 
 myModMask       = mod4Mask -- or mod4Mask for super
-myWorkspaces    = ["web","a","b","c","long","mx","sfx"]
+myWorkspaces    = ["web","trm","code","book","long","mx","social"]
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((0, xK_Print), (spawn "sleep 0.2; scrot -s /tmp/%Y-%m-%d-%H%M%S.png"))
@@ -39,7 +39,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --, ((mod4Mask, xK_t), (spawn "xterm -e /bin/bash -i"))
     , ((modm, xK_Print), (spawn "sleep 0.2; scrot -s"))
     --, ((mod4Mask, xK_l), (spawn "physlock -dms"))
-    , ((mod4Mask, xK_l), (spawn "slock"))
+    -- , ((mod4Mask, xK_l), (spawn "slock"))
     , ((0, xF86XK_AudioLowerVolume), (spawn "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -3% &"))
     , ((0, xF86XK_AudioRaiseVolume), (spawn "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +3% &"))
     --, ((mod4Mask, xK_j), (spawn "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -3% &"))
