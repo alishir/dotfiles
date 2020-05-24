@@ -134,5 +134,5 @@ main = do
         layoutHook         = desktopLayoutModifiers $ noBorders $ myLayout,
         manageHook         = myManageHook <+> manageHook desktopConfig,
         handleEventHook    = fullscreenEventHook <+> handleEventHook desktopConfig,
-	startupHook        = myStartupHook <+> startupHook desktopConfig
+        startupHook        = myStartupHook <+> startupHook desktopConfig
     }
