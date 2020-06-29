@@ -10,5 +10,7 @@
     },
     "files.autoSave": "off",
     "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true
 }

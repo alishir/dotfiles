@@ -38,8 +38,10 @@
 (ido-mode t)
 
 ;; auto-complete
-(ac-config-default)
-(add-hook 'after-init-hook 'global-company-mode)
+;;(ac-config-default)
+;;(add-hook 'after-init-hook 'global-company-mode)
+;; disable auto-complete
+(auto-complete-mode -1)
 
 ;; theme
 (load-theme 'zenburn t)
