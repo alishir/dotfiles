@@ -8,9 +8,13 @@
     "[elixir]": {
         "editor.defaultFormatter": "JakeBecker.elixir-ls"
     },
-    "files.autoSave": "off",
+    "files.autoSave": "afterDelay",
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "go.formatTool": "goimports",
-    "go.useLanguageServer": true
+    "go.useLanguageServer": true,
+    "[erlang]": {
+        "editor.defaultFormatter": "szTheory.erlang-formatter"
+    },
+    "editor.minimap.enabled": false
 }

@@ -7,6 +7,7 @@ let g:dracula_italic = 0
 colorscheme dracula
 
 set background=dark
+set hlsearch
 
 " enable plugins
 filetype plugin indent on

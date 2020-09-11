@@ -7,6 +7,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/projects/_todo_/todo.org")))
  '(package-selected-packages
    (quote
     (org org-multiple-keymap openwith vue-mode rjsx-mode rfc-mode smooth-scrolling company-erlang ivy-erlang-complete elixir-mode hl-todo erlang auto-complete auctex evil zenburn-theme))))
@@ -25,6 +26,8 @@
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message "")
 (menu-bar-mode -1)
+(tool-bar-mode -1)
+(toggle-scroll-bar -1)
 (display-time-mode 1)
 (global-display-line-numbers-mode)
 (set-default 'truncate-lines t)
