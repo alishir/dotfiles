@@ -9,6 +9,7 @@ set PATH /home/ali/.cargo/bin $PATH
 set PATH /home/ali/.cache/rebar3/bin $PATH
 # set PATH /home/ali/dev-tools/java/jdk-12/bin/ $PATH
 set PATH /home/ali/dev-tools/java/jdk1.8.0_60/bin $PATH
+set PATH $HOME/.cargo/bin $PATH
 
 source /home/ali/.kerl/23.0/activate.fish
 source /home/ali/.kiex/elixirs/elixir-1.10.2.env   

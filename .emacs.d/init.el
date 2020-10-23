@@ -7,10 +7,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/projects/_todo_/todo.org")))
+ ;; '(org-agenda-files (quote ("~/projects/_todo_/todo.org")))
  '(package-selected-packages
    (quote
-    (org org-multiple-keymap openwith vue-mode rjsx-mode rfc-mode smooth-scrolling company-erlang ivy-erlang-complete elixir-mode hl-todo erlang auto-complete auctex evil zenburn-theme))))
+    (rust-mode org org-multiple-keymap openwith vue-mode rjsx-mode rfc-mode smooth-scrolling company-erlang ivy-erlang-complete elixir-mode hl-todo erlang auto-complete auctex evil zenburn-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -22,6 +22,7 @@
   (set-fontset-font "fontset-default" 'unicode  "Vazir Code")
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
+  (toggle-scroll-bar -1)
   (tooltip-mode -1))
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message "")
@@ -63,6 +64,10 @@
 (require 'openwith)
 (openwith-mode t)
 (setq openwith-associations '(("\\.pdf\\'" "mupdf" (file))))
+
+;; remote editing
+(require 'tramp)
+(setq tramp-default-method "scp")
 
 ;; ALT-space switch back and forth between buffers
 (global-set-key (kbd "M-SPC") 'mode-line-other-buffer)
