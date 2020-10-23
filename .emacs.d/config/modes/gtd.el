@@ -1,3 +1,5 @@
+;; Ref: https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
+
 (setq org-agenda-files '("~/projects/_gtd/inbox.org"
                          "~/projects/_gtd/gtd.org"
                          "~/projects/_gtd/tickler.org"))
@@ -20,9 +22,16 @@
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
 
 (setq org-agenda-custom-commands 
-      '(("w" "At the office" tags-todo "@work"
+      '(("w" "Working items" tags-todo "@work"
          ((org-agenda-overriding-header "work")
-          (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))))
+          (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))
+        ("s" "Islamic studies" tags-todo "@islam"
+         ((org-agenda-overriding-header "Islamic Studies")
+          (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))
+        ("r" "Reading list" tags-todo "@reading"
+         ((org-agenda-overriding-header "Reading List")
+          (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))
+        ))
 
 (defun my-org-agenda-skip-all-siblings-but-first ()
   "Skip all but the first non-done entry."
