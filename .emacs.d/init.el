@@ -24,9 +24,7 @@
 ;; PATH
 ;; ==============
 (add-to-list 'exec-path "/home/ali/bin/")
-(setenv "PATH" (concat (getenv "PATH") ":/home/ali/.kerl/23.2.1/bin"))
-(setenv "PATH" (concat (getenv "PATH") ":/home/ali/.cargo/bin"))
-
+(add-to-list 'exec-path "/home/ali/.cargo/bin")
 ;; ======================
 ;; RUST
 ;; ======================
@@ -248,6 +246,7 @@
 (set-fontset-font "fontset-default" 'unicode  "Vazir")
 ;;  (set-face-attribute 'default nil :height 120)
 
+(setq inhibit-startup-screen t)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
