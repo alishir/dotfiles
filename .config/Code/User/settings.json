@@ -1,7 +1,5 @@
 {
-    "workbench.colorTheme": "Zenburn",
     "editor.fontSize": 15,
-    "window.zoomLevel": 0,
     "editor.rulers": [
         60
     ],
@@ -16,5 +14,6 @@
     "[erlang]": {
         "editor.defaultFormatter": "szTheory.erlang-formatter"
     },
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Zenburn"
 }

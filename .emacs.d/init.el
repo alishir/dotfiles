@@ -252,5 +252,9 @@
 (scroll-bar-mode -1)
 
 ;; https://emacs.stackexchange.com/questions/3458/how-to-switch-between-windows-quickly
-(windmove-default-keybindings)
+(windmove-default-keybindings 'super)
 
+
+(load "~/.emacs.d/autonote.el")
+(global-set-key (kbd "<f10>") 'start-auto-noting)
+(global-set-key (kbd "<f9>") 'stop-auto-noting)
