@@ -8,7 +8,9 @@
     (unless (minibufferp)
       (unless (equal old-primary new-primary)
 	(message "set new primary")
-	(insert new-primary)
+	(setq primary-fixed-broken (replace-regexp-in-string "-\n" "" new-primary))
+	(insert (replace-regexp-in-string "\n" " " primary-fixed-broken))
+
 	(fill-paragraph)
 	(setq old-primary new-primary)
 	(org-meta-return)
